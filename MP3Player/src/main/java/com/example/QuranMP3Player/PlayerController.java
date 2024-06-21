@@ -1,5 +1,6 @@
 package com.example.QuranMP3Player;
 
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,11 +14,18 @@ import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 
 import java.io.File;
+import java.util.concurrent.Callable;
 
 public class PlayerController {
 
     @FXML
     private Button btnPause;
+    @FXML
+    private Label label2;
+    @FXML
+    private Label label3;
+    @FXML
+    private Label label4;
     @FXML
     private Slider slider;
     @FXML
@@ -31,6 +39,7 @@ public class PlayerController {
     @FXML
     private MediaView mediaView;
     private MediaPlayer mediaPlayer;
+    private String currentfile;
 
     @FXML
     void doPause(ActionEvent event) {
@@ -86,6 +95,7 @@ public class PlayerController {
                 Media media = new Media(mediaFile);
                 mediaPlayer = new MediaPlayer(media);
                 //mediaView = new MediaView(mediaPlayer);
+                currentfile = newValue;
 
                 mediaPlayer.currentTimeProperty().addListener((observableValue, oldValuee, newValuee) ->{
                     slider.setValue(newValuee.toSeconds());
@@ -95,15 +105,30 @@ public class PlayerController {
                     Duration duration = media.getDuration();
                     slider.setValue(duration.toSeconds());
                 });
-
+                label2.setText(getCurrentfile());
+                mediaPlayer.totalDurationProperty().addListener((obs, oldDuration, newDuration) -> {
+                    label4.setText(formatTime(newDuration));
+                });
+                label3.textProperty().bind(Bindings.createStringBinding(() ->
+                        formatTime(mediaPlayer.getCurrentTime()), mediaPlayer.currentTimeProperty()));
             }
         });
 
 
+    }
+    String getCurrentfile(){
+        return currentfile;
     }
     @FXML
     void sliderGo(MouseEvent event) {
         mediaPlayer.seek(Duration.seconds(slider.getValue()));
 
     }
+    private String formatTime(javafx.util.Duration duration) {
+        int intDuration = (int) Math.floor(duration.toSeconds());
+        int minutes = intDuration / 60;
+        int seconds = intDuration % 60;
+        return String.format("%02d:%02d", minutes, seconds);
+    }
+
 }

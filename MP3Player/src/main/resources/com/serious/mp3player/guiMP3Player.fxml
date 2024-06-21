@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -12,22 +14,19 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.QuranMP3Player.PlayerController">
-   <stylesheets>
-      <URL value="@../../../../java/com/example/QuranMP3Player/style.css" />
-   </stylesheets>
    <children>
-      <Pane layoutX="-7.0" prefHeight="90.0" prefWidth="640.0" style="-fx-background-color: black; visibility: 10;">
+      <Pane layoutX="-7.0" prefHeight="90.0" prefWidth="640.0" style="-fx-background-color: black;">
          <children>
-            <Label fx:id="lblintialise" layoutX="14.0" layoutY="14.0" style="-fx-background-radius: 10;" text="QuranMP3" textFill="#f2f0f0" wrapText="true">
+            <Label fx:id="lblintialise" layoutX="14.0" layoutY="14.0" style="-fx-background-radius: 10;" text="QuranMP3" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Candara" size="32.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <HBox alignment="CENTER" layoutX="223.0" layoutY="330.0" prefHeight="52.0" prefWidth="332.0" spacing="10.0" styleClass="root">
+      <HBox alignment="CENTER" layoutX="223.0" layoutY="330.0" prefHeight="52.0" prefWidth="332.0" spacing="10.0">
          <stylesheets>
-            <URL value="@../../../../java/com/example/QuranMP3Player/style.css" />
+            <URL value="file:///C:/Users/HP/Documents/GitHub/QuranMP3/MP3Player/src/main/java/com/example/QuranMP3Player/style.css" />
          </stylesheets>
          <children>
             <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#doPlay" style="-fx-background-color: green; -fx-background-radius: 10;" text="play">
@@ -54,6 +53,26 @@
             <Font name="Arial Black" size="17.0" />
          </font>
       </Label>
-      <Slider fx:id="slider" layoutX="177.0" layoutY="302.0" onMousePressed="#sliderGo" prefHeight="14.0" prefWidth="428.0" />
+      <Slider fx:id="slider" layoutX="175.0" layoutY="316.0" onMousePressed="#sliderGo" prefHeight="14.0" prefWidth="428.0" />
+      <Label fx:id="label2" alignment="CENTER" layoutX="273.0" layoutY="248.0" prefHeight="62.0" prefWidth="206.0" textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font name="Century Schoolbook" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="label3" layoutX="175.0" layoutY="348.0" prefHeight="26.0" prefWidth="38.0" text="00.00">
+         <font>
+            <Font name="Californian FB" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="label4" layoutX="548.0" layoutY="348.0" prefHeight="26.0" prefWidth="38.0" text="00.00">
+         <font>
+            <Font name="Californian FB" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="284.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@sheikhSudaiss.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
